@@ -15,12 +15,14 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>EasyPusher</RootNamespace>
     <ProjectName>EasyPusher_FILE</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -52,7 +54,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_WINSOCKAPI_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../Include/</AdditionalIncludeDirectories>
       <AdditionalOptions>/D "_CRT_SECURE_NO_WARNINGS" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -92,7 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="getopt.c" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_rtsp.cpp" />
     <ClCompile Include="MP4Demux\Mp4_avc1_box.cpp" />
     <ClCompile Include="MP4Demux\Mp4_avcC_box.cpp" />
     <ClCompile Include="MP4Demux\Mp4_ftyp_box.cpp" />
@@ -116,6 +118,35 @@
     <ClCompile Include="MP4Demux\Mp4_trak_box.cpp" />
     <ClCompile Include="MP4Demux\Public_func.cpp" />
     <ClCompile Include="MP4Demux\read_write.cpp" />
+    <ClCompile Include="rtsp\AACSource.cpp" />
+    <ClCompile Include="rtsp\G711ASource.cpp" />
+    <ClCompile Include="rtsp\H264Parser.cpp" />
+    <ClCompile Include="rtsp\H264Source.cpp" />
+    <ClCompile Include="rtsp\H265Source.cpp" />
+    <ClCompile Include="rtsp\MediaSession.cpp" />
+    <ClCompile Include="rtsp\RtpConnection.cpp" />
+    <ClCompile Include="rtsp\RtspConnection.cpp" />
+    <ClCompile Include="rtsp\RtspMessage.cpp" />
+    <ClCompile Include="rtsp\RtspPusher.cpp" />
+    <ClCompile Include="rtsp\RtspServer.cpp" />
+    <ClCompile Include="rtsp\xop\Acceptor.cpp" />
+    <ClCompile Include="rtsp\xop\BufferReader.cpp" />
+    <ClCompile Include="rtsp\xop\BufferWriter.cpp" />
+    <ClCompile Include="rtsp\xop\EpollTaskScheduler.cpp" />
+    <ClCompile Include="rtsp\xop\EventLoop.cpp" />
+    <ClCompile Include="rtsp\xop\Logger.cpp" />
+    <ClCompile Include="rtsp\xop\MemoryManager.cpp" />
+    <ClCompile Include="rtsp\xop\NetInterface.cpp" />
+    <ClCompile Include="rtsp\xop\Pipe.cpp" />
+    <ClCompile Include="rtsp\xop\SelectTaskScheduler.cpp" />
+    <ClCompile Include="rtsp\xop\SocketUtil.cpp" />
+    <ClCompile Include="rtsp\xop\TcpClient.cpp" />
+    <ClCompile Include="rtsp\xop\TcpConnection.cpp" />
+    <ClCompile Include="rtsp\xop\TcpServer.cpp" />
+    <ClCompile Include="rtsp\xop\TcpSocket.cpp" />
+    <ClCompile Include="rtsp\xop\Timer.cpp" />
+    <ClCompile Include="rtsp\xop\Timestamp.cpp" />
+    <ClCompile Include="rtsp\xop\xop.cpp" />
     <ClCompile Include="trace.c" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +180,44 @@
     <ClInclude Include="MP4Demux\Public_func.h" />
     <ClInclude Include="MP4Demux\read_write.h" />
     <ClInclude Include="MP4Demux\Sample_description.h" />
+    <ClInclude Include="rtsp\AACSource.h" />
+    <ClInclude Include="rtsp\G711ASource.h" />
+    <ClInclude Include="rtsp\H264Parser.h" />
+    <ClInclude Include="rtsp\H264Source.h" />
+    <ClInclude Include="rtsp\H265Source.h" />
+    <ClInclude Include="rtsp\media.h" />
+    <ClInclude Include="rtsp\MediaSession.h" />
+    <ClInclude Include="rtsp\MediaSource.h" />
+    <ClInclude Include="rtsp\rtp.h" />
+    <ClInclude Include="rtsp\RtpConnection.h" />
+    <ClInclude Include="rtsp\rtsp.h" />
+    <ClInclude Include="rtsp\RtspConnection.h" />
+    <ClInclude Include="rtsp\RtspMessage.h" />
+    <ClInclude Include="rtsp\RtspPusher.h" />
+    <ClInclude Include="rtsp\RtspServer.h" />
+    <ClInclude Include="rtsp\xop\Acceptor.h" />
+    <ClInclude Include="rtsp\xop\BufferReader.h" />
+    <ClInclude Include="rtsp\xop\BufferWriter.h" />
+    <ClInclude Include="rtsp\xop\Channel.h" />
+    <ClInclude Include="rtsp\xop\EpollTaskScheduler.h" />
+    <ClInclude Include="rtsp\xop\EventLoop.h" />
+    <ClInclude Include="rtsp\xop\log.h" />
+    <ClInclude Include="rtsp\xop\Logger.h" />
+    <ClInclude Include="rtsp\xop\MemoryManager.h" />
+    <ClInclude Include="rtsp\xop\NetInterface.h" />
+    <ClInclude Include="rtsp\xop\Pipe.h" />
+    <ClInclude Include="rtsp\xop\RingBuffer.h" />
+    <ClInclude Include="rtsp\xop\SelectTaskScheduler.h" />
+    <ClInclude Include="rtsp\xop\Socket.h" />
+    <ClInclude Include="rtsp\xop\SocketUtil.h" />
+    <ClInclude Include="rtsp\xop\TaskScheduler.h" />
+    <ClInclude Include="rtsp\xop\TcpClient.h" />
+    <ClInclude Include="rtsp\xop\TcpConnection.h" />
+    <ClInclude Include="rtsp\xop\TcpServer.h" />
+    <ClInclude Include="rtsp\xop\TcpSocket.h" />
+    <ClInclude Include="rtsp\xop\Timer.h" />
+    <ClInclude Include="rtsp\xop\Timestamp.h" />
+    <ClInclude Include="rtsp\xop\xop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

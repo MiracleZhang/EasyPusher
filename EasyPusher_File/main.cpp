@@ -32,13 +32,16 @@ using namespace std;
 #include <signal.h>
 #endif
 
-<<<<<<< HEAD
-char* ConfigIP		= "192.168.0.107";		//Default EasyDarwin Address
-char* ConfigPort	= "10554";				//Default EasyDarwin Port
-=======
-char* ConfigIP		= "www.easydarwin.org";		//Default EasyDarwin Address
+
+char* ConfigIP		= "192.168.1.101";		//Default EasyDarwin Address
 char* ConfigPort	= "554";				//Default EasyDarwin Port
->>>>>>> 6f3f44fd8a9e954d2aaafb6773d4e04d6fab7fd6
+
+//char* ConfigIP		= "www.easydarwin.org";		//Default EasyDarwin Address
+//char* ConfigPort	= "554";				//Default EasyDarwin Port
+
+//char* ConfigIP = "192.168.1.101";		//Default EasyDarwin Address
+//char* ConfigPort = "8554";				//Default EasyDarwin Port
+
 char* ConfigName=	"test.sdp";	//Default RTSP Push StreamName
 char* ProgName;								//Program Name
 

@@ -72,7 +72,94 @@
     <ClCompile Include="MP4Demux\read_write.cpp">
       <Filter>MP4Demux</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="rtsp\AACSource.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\G711ASource.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\H264Parser.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\H264Source.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\H265Source.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\MediaSession.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\RtpConnection.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\RtspConnection.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\RtspMessage.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\RtspPusher.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\RtspServer.cpp">
+      <Filter>rtsp</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\Acceptor.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\BufferReader.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\BufferWriter.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\EpollTaskScheduler.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\EventLoop.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\Logger.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\MemoryManager.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\NetInterface.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\Pipe.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\SelectTaskScheduler.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\SocketUtil.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\TcpClient.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\TcpConnection.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\TcpServer.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\TcpSocket.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\Timer.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\Timestamp.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="rtsp\xop\xop.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
+    <ClCompile Include="main_rtsp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="getopt.h" />
@@ -163,10 +250,130 @@
     <ClInclude Include="MP4Demux\Sample_description.h">
       <Filter>MP4Demux</Filter>
     </ClInclude>
+    <ClInclude Include="rtsp\AACSource.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\G711ASource.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\H264Parser.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\H264Source.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\H265Source.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\media.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\MediaSession.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\MediaSource.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\rtp.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\RtpConnection.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\rtsp.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\RtspConnection.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\RtspMessage.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\RtspPusher.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\RtspServer.h">
+      <Filter>rtsp</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Acceptor.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\BufferReader.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\BufferWriter.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Channel.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\EpollTaskScheduler.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\EventLoop.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\log.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Logger.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\MemoryManager.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\NetInterface.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Pipe.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\RingBuffer.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\SelectTaskScheduler.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Socket.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\SocketUtil.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\TaskScheduler.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\TcpClient.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\TcpConnection.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\TcpServer.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\TcpSocket.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Timer.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Timestamp.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\xop.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MP4Demux">
       <UniqueIdentifier>{eed20c57-26ad-411e-b412-36b0f16742fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rtsp">
+      <UniqueIdentifier>{731752f4-e907-4219-b85b-f76b9552115d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rtsp\xop">
+      <UniqueIdentifier>{574c8e35-52a5-4676-b60d-74822cd53226}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
