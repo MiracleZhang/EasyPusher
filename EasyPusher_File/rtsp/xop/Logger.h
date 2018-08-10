@@ -18,7 +18,7 @@ namespace xop
 
 enum Priority 
 {
-    DEBUG, STATE, INFO, WARNING, ERROR
+    DEBUG, STATE, INFO, WARNING, ERRORR
 };	
 	
 class Logger
@@ -45,7 +45,7 @@ private:
 };
 
 #define LOG_DEBUG(fmt, ...) Logger::instance().log(DEBUG, __FILE__, __FUNCTION__,__LINE__, fmt, ##__VA_ARGS__)
-#define LOG_ERROR(fmt, ...) Logger::instance().log(ERROR, __FILE__, __FUNCTION__,__LINE__, fmt, ##__VA_ARGS__)
+#define LOG_ERROR(fmt, ...) Logger::instance().log(ERRORR, __FILE__, __FUNCTION__,__LINE__, fmt, ##__VA_ARGS__)
 
 }
 

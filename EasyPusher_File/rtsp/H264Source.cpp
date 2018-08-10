@@ -9,6 +9,7 @@
 //#include "RtpConnection.h"
 #include <cstdio>
 #include <chrono>
+#include "xop\Base64.h"
 #if defined(__linux) || defined(__linux__)
 #include <sys/time.h>
 #endif
@@ -42,9 +43,47 @@ string H264Source::getMediaDescription(uint16_t port)
     return string(buf);
 }
 
+void H264Source::setSPS(uint8_t *sps, int spsLen) {
+	if (sps != nullptr && spsLen != 0) {
+		_sps.reset(new uint8_t[spsLen+1]);
+		memcpy(_sps.get(), sps, spsLen);
+		_sps.get()[spsLen] = 0;
+		_spsLen = spsLen;
+	}
+}
+
+void H264Source::setPPS(uint8_t *pps, int ppsLen) {
+	if (pps != nullptr && ppsLen != 0) {
+		_pps.reset(new uint8_t[ppsLen+1]);
+		memcpy(_pps.get(), pps, ppsLen);
+		_pps.get()[ppsLen] = 0;
+		_ppsLen = ppsLen;
+	}
+}
+
+/*
+m=video 0 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 packetization-mode=1;sprop-parameter-sets=,0KAH5ZTAeAi/eAqEAAAPpAADqYJ2hYuaA==
+a=control:streamid=0
+*/
 string H264Source::getAttribute()
 {
-    return string("a=rtpmap:96 H264/90000");
+    // by zhangjianping
+    // 增加sps + pps 到 a=
+	char buf[500] = { 0 };
+	sprintf(buf, "a=rtpmap:96 H264/90000\r\n");
+	
+	char strTemp[100];
+	memset(strTemp, 0, 100);
+	av_base64_encode(strTemp, 100, _sps.get(), _spsLen);
+
+	char strTemp2[100];
+	memset(strTemp2, 0, 100);
+	av_base64_encode(strTemp2, 100, _pps.get(), _ppsLen);
+	sprintf(buf + strlen(buf), "a=fmtp:96 packetization-mode=1;sprop-parameter-sets=%s,%s", strTemp, strTemp2);
+
+	return string(buf);
 }
 
 bool H264Source::handleFrame(MediaChannelId channelId, AVFrame& frame)

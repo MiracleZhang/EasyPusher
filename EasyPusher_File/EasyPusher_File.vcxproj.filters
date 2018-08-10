@@ -160,6 +160,9 @@
       <Filter>rtsp\xop</Filter>
     </ClCompile>
     <ClCompile Include="main_rtsp.cpp" />
+    <ClCompile Include="rtsp\xop\Base64.cpp">
+      <Filter>rtsp\xop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="getopt.h" />
@@ -362,6 +365,9 @@
       <Filter>rtsp\xop</Filter>
     </ClInclude>
     <ClInclude Include="rtsp\xop\xop.h">
+      <Filter>rtsp\xop</Filter>
+    </ClInclude>
+    <ClInclude Include="rtsp\xop\Base64.h">
       <Filter>rtsp\xop</Filter>
     </ClInclude>
   </ItemGroup>

@@ -130,6 +130,7 @@
     <ClCompile Include="rtsp\RtspPusher.cpp" />
     <ClCompile Include="rtsp\RtspServer.cpp" />
     <ClCompile Include="rtsp\xop\Acceptor.cpp" />
+    <ClCompile Include="rtsp\xop\Base64.cpp" />
     <ClCompile Include="rtsp\xop\BufferReader.cpp" />
     <ClCompile Include="rtsp\xop\BufferWriter.cpp" />
     <ClCompile Include="rtsp\xop\EpollTaskScheduler.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="rtsp\RtspPusher.h" />
     <ClInclude Include="rtsp\RtspServer.h" />
     <ClInclude Include="rtsp\xop\Acceptor.h" />
+    <ClInclude Include="rtsp\xop\Base64.h" />
     <ClInclude Include="rtsp\xop\BufferReader.h" />
     <ClInclude Include="rtsp\xop\BufferWriter.h" />
     <ClInclude Include="rtsp\xop\Channel.h" />

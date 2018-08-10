@@ -24,10 +24,10 @@
 #include "EasyPusherAPI.h"
 #include "EasyRTSPClientAPI.h"
 
-char* ConfigIP		= "192.168.1.55";		//Default EasyDarwin Address
+char* ConfigIP		= "192.168.1.101";		//Default EasyDarwin Address
 char* ConfigPort	= "554";				//Default EasyDarwin Port
-char* ConfigName	= "easypusher_rtsp.sdp";//Default Stream Name
-char* ConfigRTSPURL	= "rtsp://admin:admin@192.168.1.222/22";	//RTSP Source URL(With username:password@)
+char* ConfigName	= "test.sdp";//Default Stream Name
+char* ConfigRTSPURL	= "rtsp://admin:admin@192.168.1.101:554/test.sdp";	//RTSP Source URL(With username:password@)
 char* ProgName;		//Program Name
 
 Easy_Pusher_Handle	fPusherHandle = 0;		//libEasyPusher Handle

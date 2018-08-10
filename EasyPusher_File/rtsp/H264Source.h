@@ -31,6 +31,10 @@ public:
     bool handleFrame(MediaChannelId channelId, AVFrame& frame);
 
     static uint32_t getTimeStamp();
+
+	virtual void setSPS(uint8_t *sps, int spsLen);
+
+	virtual void setPPS(uint8_t *pps, int ppsLen);
 	
 private:
     H264Source(uint32_t frameRate);

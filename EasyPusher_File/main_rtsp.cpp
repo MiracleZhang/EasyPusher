@@ -51,6 +51,7 @@ char* ProgName;								//Program Name
 #include "./rtsp/H264Source.h"
 #include "./rtsp/AACSource.h"
 #include "./rtsp/xop/Timer.h"
+#include "./rtsp/xop/Logger.h"
 
 
 std::shared_ptr<xop::EventLoop> _eventLoop = nullptr;
@@ -321,7 +322,9 @@ int main(int argc, char * argv[])
 	// start rtsp
 	XOP_Init();
 
-	const char *url = "rtsp://192.168.1.101:554/test.sdp";
+	xop::Logger::instance().setLogFile("./eashpush.log");
+
+	const char *url = "rtsp://192.168.1.101:8554/test.sdp";
 	if (_rtspPusher && _rtspPusher->isConnected())
 	{
 		_rtspPusher->close();
@@ -330,7 +333,10 @@ int main(int argc, char * argv[])
 	_eventLoop.reset(new xop::EventLoop());
 	_rtspPusher.reset(new xop::RtspPusher(_eventLoop.get()));
 	xop::MediaSession *session = xop::MediaSession::createNew();
-	session->addMediaSource(xop::channel_0, xop::H264Source::createNew());
+	auto h264 = xop::H264Source::createNew();
+	h264->setSPS(mediainfo.u8Sps, mediainfo.u32SpsLength);
+	h264->setPPS(mediainfo.u8Pps, mediainfo.u32PpsLength);
+	session->addMediaSource(xop::channel_0, h264);
 	session->addMediaSource(xop::channel_1, xop::AACSource::createNew(mediainfo.u32AudioSamplerate, mediainfo.u32AudioChannel, false));
 
 	_sessionId = _rtspPusher->addMeidaSession(session);
@@ -496,13 +502,21 @@ unsigned int _stdcall  VideoThread(void* lParam)
 
 
 				// push video
-				xop::AVFrame vidoeFrame(avFrame.u32AVFrameLen);
+
+				// by zhangjianping
+				// 去掉sps+pps+header
+				int skip = 4;
+				if (bKeyFrame) {
+					skip += mediainfo.u32SpsLength + mediainfo.u32PpsLength + 8;
+				}
+
+				xop::AVFrame vidoeFrame(avFrame.u32AVFrameLen - skip);
 				vidoeFrame.size = 0;
 				vidoeFrame.type = (bKeyFrame)? VIDEO_FRAME_I : VIDEO_FRAME_P;
 				vidoeFrame.timestamp = xop::H264Source::getTimeStamp();
 
-				memcpy(vidoeFrame.buffer.get() + vidoeFrame.size, pFrame, avFrame.u32AVFrameLen);
-				vidoeFrame.size = avFrame.u32AVFrameLen;
+				memcpy(vidoeFrame.buffer.get() + vidoeFrame.size, pFrame + skip, avFrame.u32AVFrameLen - skip);
+				vidoeFrame.size = avFrame.u32AVFrameLen - skip;
 
 				// RTSP视频推流
 				if (_rtspPusher && _rtspPusher->isConnected())

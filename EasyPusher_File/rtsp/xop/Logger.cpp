@@ -18,7 +18,7 @@ const char* Priority_To_String[] =
     "CONFIG",
     "INFO",
     "WARNING",
-    "ERROR"
+    "ERRORR"
 };
 
 Logger::Logger() 

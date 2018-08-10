@@ -45,11 +45,23 @@ public:
     virtual uint32_t getClockRate() const
     { return _clockRate; }
 
+	virtual void setSPS(uint8_t *sps, int spsLen){}
+
+	virtual void setPPS(uint8_t *pps, int ppsLen){}
+
+	virtual void setVPS(uint8_t *vps, int vpsLen){}
+
 protected:
     MediaType _mediaType = NONE;
     uint32_t _payload = 0;
     uint32_t _clockRate = 0;
     SendFrameCallback _sendFrameCallback;
+	std::shared_ptr<uint8_t> _sps;
+	int _spsLen = 0;
+	std::shared_ptr<uint8_t> _pps;
+	int _ppsLen = 0;
+	std::shared_ptr<uint8_t> _vps;
+	int _vpsLen = 0;
 };
 
 }
